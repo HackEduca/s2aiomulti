@@ -1,6 +1,6 @@
  ![](https://github.com/MrYsLab/s2aio/blob/master/images/happy.png)
 
-Program, control and monitor multiple [Arduino Boards](https://www.arduino.cc/) board using the [Scratch](scratch.mit.edu) or [Snap!](http://snap.berkeley.edu/) visual programming languages without having to learn C++. 
+Program, control and monitor multiple [Arduino Boards](https://www.arduino.cc/) board using the [Scratch](scratch.mit.edu)  visual programming language. 
 
 ![](https://github.com/MrYsLab/s2aio/blob/master/images/examples/blink.png)
 
@@ -23,7 +23,7 @@ Program, control and monitor multiple [Arduino Boards](https://www.arduino.cc/) 
 * Easy to install.
 * Easy to use.
 
-### Want to learn more? Check out the [Wiki pages](https://github.com/MrYsLab/s2aio/wiki).
+### Want to learn more? Check out the [Wiki pages](https://github.com/MrYsLab/s2aiomulti/wiki).
 
 
 
