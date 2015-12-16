@@ -8,8 +8,8 @@ setup(
                       'aiohttp>=0.19.0'],
     package_data={'s2aior': [('configuration/*.cfg'),
                             ('miscellaneous/*.txt, *.csv, *.ods'),
-                            ('ScratchFiles/ExtensionDescrptors/*.s2e'),
-                            ('ScratchFiles/ScratchProjects/*.sb2'),
+                            ('scratch_files/extensions/*.s2e'),
+                            ('scratch_files/sprojects.png/*.sb2'),
                             ('Snap!Files/*.xml')]},
     entry_points={
         'console_scripts': [
