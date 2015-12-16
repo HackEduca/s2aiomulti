@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Created on April 28 11:39:15 2015
+Created on December 16 11:39:15 2015
 
 @author: Alan Yorinks
 Copyright (c) 2015 Alan Yorinks All right reserved.
@@ -36,6 +36,19 @@ class S2AIOS:
     def __init__(self, com_port=None, version_request=False, ip_address=None,
                  ip_port=None, server_ip_address="127.0.0.1", server_ip_port=50209,
                  board_id=None, router_ip_address="127.0.0.1", router_ip_port=50208):
+        """
+        This is the constructor for the s2aio server and is called from s2aior to instantiate the server
+        :param com_port: Arduino Com port
+        :param version_request: Print version
+        :param ip_address: If using wifi, ip address of arduino
+        :param ip_port: If using wifi, ip port of arduino
+        :param server_ip_address: IP address of this server
+        :param server_ip_port: IP port of this server
+        :param board_id: Board identifer
+        :param router_ip_address: IP address of s2aio router
+        :param router_ip_port: IP port of s2aio router
+        :return: None
+        """
 
         # establish initial base_path - where s2aios lives
         self.ip_address = ip_address
@@ -47,11 +60,10 @@ class S2AIOS:
         self.router_ip_port = router_ip_port
 
         # get version info if requested
-        # if version_request:
-        print()
-        # print('s2aios version 1.0 - 10 Dec 2015')
-        # if version_request:
-        #     sys.exit(0)
+        if version_request:
+            print()
+            print('s2aios version 1.1.0a1 - 10 Dec 2015')
+            sys.exit(0)
 
         # arduino com_port to use
         self.com_port = com_port
@@ -142,7 +154,6 @@ class S2AIOS:
             app.router.add_route('GET', '/play_tone/{pin}/{frequency}/{duration}', self.play_tone)
             app.router.add_route('GET', '/set_servo_position/{pin}/{position}', self.set_servo_position)
             app.router.add_route('GET', '/tone_off/{pin}', self.tone_off)
-            # app.router.add_route('Get', '/send_broad_cast'/{'msg_num'}, self.process_msg)
 
             # Snap requires reporters to be supported
             app.router.add_route('GET', '/digital_read/{pin}', self.digital_read)
@@ -157,16 +168,14 @@ class S2AIOS:
             pass
 
     async def send_report(self, url):
-
+        """
+        Send a data report to the s2aio router
+        :param url: URL used to send report to router
+        :return: None
+        """
         x = urllib.request.urlopen(url)
         x.read()
-        # print(url)
-        # async with self.client.get(url) as response:
-        #     await response.read()
 
-    async def process_msg(self, request):
-        msg_num = request.match_info['msg_num']
-        return web.Response(body="ok".encode('utf-8'))
 
     async def get_pin_capabilities(self):
         """
@@ -729,7 +738,7 @@ def main():
     parser.add_argument("-ra", dest="router_addr", default="127.0.0.1", help="Router IP Address")
     parser.add_argument("-rp", dest="router_port", default="50208", help="Router IP port")
 
-    parser.add_argument("-v", action='store_true', help='Print version and Python path')
+    parser.add_argument("-v", action='store_true', help='Print version')
 
     args = parser.parse_args()
 
