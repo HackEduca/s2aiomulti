@@ -55,7 +55,10 @@ class S2AIOR:
             print('Cannot locate s2aio configuration directory.')
             sys.exit(0)
 
-        print('\n\n!!!!!! The Configuration File is located at: ' + self.base_path + ' !!!!!!\n\n')
+        print('\n\n!!!!!!')
+        print('The Configuration File is located at: ')
+        print(self.base_path + '/configuration/configuration.cfg ' )
+        print('\n!!!!!\n\n')
 
         # grab the config file and get it ready for parsing
         config = configparser.ConfigParser()
