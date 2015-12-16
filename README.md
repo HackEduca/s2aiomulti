@@ -1,10 +1,10 @@
 # s2aiomulti
-## Control and Montior Multiple Arduino Boards
+## Program, Control and Monitor Multiple Arduino Boards
 ![](https://github.com/MrYsLab/s2aiomulti/blob/master/documentation/logo.png)
 
-Program, control and monitor multiple [Arduino Boards](https://www.arduino.cc/) board using the [Scratch](scratch.mit.edu)  visual programming language. 
+Use the [Scratch](scratch.mit.edu) visual programming language to control and monitor multiple [Arduino Boards](https://www.arduino.cc/) board  
 
-### **Included with s2aio are programming blocks** for the _**following languages**_:
+### **Included with s2aiomulti are programming blocks** for the _**following languages**_:
 * English (EN)
 * Chinese (zh-CN)
 * Chinese (zh-TW)
