@@ -2,19 +2,22 @@ from setuptools import setup
 
 setup(
     name='s2aiomulti',
-    version='1.1.0a1',
-    packages=['s2aios', 's2aior'],
+    version='1.2',
+    packages=['s2aios', 's2aior', 's2aiobe'],
     install_requires=['pymata-aio>=2.7',
                       'aiohttp>=0.19.0'],
-    package_data={'s2aior': [('configuration/*.cfg'),
-                            ('miscellaneous/*.txt, *.csv, *.ods'),
+    package_data={'s2aior': [('configuration/*'),
+                            ('miscellaneous/*.txt'),
                             ('scratch_files/extensions/*.s2e'),
-                            ('scratch_files/sprojects.png/*.sb2'),
+                            ('scratch_files/projects/*.sb2'),
                             ('Snap!Files/*.xml')]},
+
+
     entry_points={
         'console_scripts': [
             's2aios = s2aios.__main__:main',
-            's2aior = s2aior.__main__:main'
+            's2aior = s2aior.__main__:main',
+            's2aiobe = s2aiobe.__main__:main'
         ]
     },
     url='https://github.com/MrYsLab/s2aiomulti/wiki',
@@ -25,7 +28,7 @@ setup(
     description='Arduino Multi-Board HTTP Controller and Router',
     keywords=['Firmata', 'Arduino', 'Scratch'],
     classifiers=[
-        'Development Status :: 3 - Alpha',
+        'Development Status :: 3 - Beta',
         'Environment :: Other Environment',
         'Intended Audience :: Education',
         'License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)',

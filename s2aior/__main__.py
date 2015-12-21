@@ -29,6 +29,7 @@ import sys
 
 import aiohttp
 from aiohttp import web
+import argparse
 
 
 # noinspection PyMethodMayBeStatic,PyShadowingNames
@@ -37,8 +38,11 @@ class S2AIOR:
     This is the "constructor" for the s2aio router.
     It reads the configuration file and sets several class variables
     """
-    def __init__(self):
+
+    def __init__(self, config_path):
         path = sys.path
+
+        self.base_path = None
 
         # get the prefix
         prefix = sys.prefix
@@ -55,10 +59,8 @@ class S2AIOR:
             print('Cannot locate s2aio configuration directory.')
             sys.exit(0)
 
-        print('\n\n!!!!!!')
-        print('The Configuration File is located at: ')
-        print(self.base_path + '/configuration/configuration.cfg ' )
-        print('\n!!!!!\n\n')
+        print('\nScratch Project Files Located at:')
+        print(self.base_path + '/scratch_files/projects\n')
 
         # grab the config file and get it ready for parsing
         config = configparser.ConfigParser()
@@ -83,6 +85,23 @@ class S2AIOR:
         self.connections = []
 
         self.poll_reply = ""
+
+        if not config_path:
+            hpath = os.path.expanduser('~')
+        else:
+            hpath = config_path
+        self.boards_path = hpath + '/s2aior_boards'
+        if not os.path.exists(self.boards_path):
+            print('No Arduino Configuration Files Found - run s2aiobe')
+            sys.exit(0)
+
+        self.config_file = self.boards_path + '/boards.cfg'
+
+        if not os.path.isfile(self.config_file):
+            print('No Arduino Configuration Files Found - run s2aiobe')
+            sys.exit(0)
+
+        config.read(self.config_file, encoding="utf8")
 
         # board numbers range from 1 to 10
         for board_number in range(1, 11):
@@ -332,8 +351,20 @@ class S2AIOR:
 
 def main():
     # noinspection PyShadowingNames
+
     loop = asyncio.get_event_loop()
-    s2aior = S2AIOR()
+    parser = argparse.ArgumentParser()
+
+    parser.add_argument("-p", dest="config_path", default="None",
+                        help="Explicitly set the board configuration file location")
+    args = parser.parse_args()
+
+    if args.config_path == 'None':
+        config_path = None
+    else:
+        config_path = args.config_path
+
+    s2aior = S2AIOR(config_path)
 
     # noinspection PyBroadException
     try:
@@ -371,10 +402,10 @@ def main():
 
 
 if __name__ == "__main__":
+
     try:
         main()
     except KeyboardInterrupt:
-
         sys.exit(0)
 
     loop = asyncio.get_event_loop()

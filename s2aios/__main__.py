@@ -44,7 +44,7 @@ class S2AIOS:
         :param ip_port: If using wifi, ip port of arduino
         :param server_ip_address: IP address of this server
         :param server_ip_port: IP port of this server
-        :param board_id: Board identifer
+        :param board_id: Board identifier
         :param router_ip_address: IP address of s2aio router
         :param router_ip_port: IP port of s2aio router
         :return: None
@@ -62,7 +62,7 @@ class S2AIOS:
         # get version info if requested
         if version_request:
             print()
-            print('s2aios version 1.1.0a1 - 10 Dec 2015')
+            print('s2aios version 1.2 - 21 Dec 2015')
             sys.exit(0)
 
         # arduino com_port to use
@@ -175,7 +175,6 @@ class S2AIOS:
         """
         x = urllib.request.urlopen(url)
         x.read()
-
 
     async def get_pin_capabilities(self):
         """
