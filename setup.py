@@ -28,7 +28,7 @@ setup(
     description='Arduino Multi-Board HTTP Controller and Router',
     keywords=['Firmata', 'Arduino', 'Scratch'],
     classifiers=[
-        'Development Status :: 3 - Beta',
+        'Development Status :: 4- Beta',
         'Environment :: Other Environment',
         'Intended Audience :: Education',
         'License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)',
